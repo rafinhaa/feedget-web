@@ -1,5 +1,5 @@
-function App() {
-  return <h1>Olá mundo!</h1>;
-}
+import { Widget } from "./components/Widget";
 
-export default App;
+export const App = () => {
+  return <Widget />;
+};
