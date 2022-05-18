@@ -5,8 +5,9 @@ import { CloseButton } from "../CloseButton/CloseButton";
 import bugImageUrl from "../../assets/bug.png";
 import ideaImageUrl from "../../assets/idea.png";
 import thoughtImageUrl from "../../assets/thought.png";
+import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 
-const feedbackTypes = {
+export const feedbackTypes = {
   BUG: {
     title: "Problema",
     image: {
@@ -30,7 +31,7 @@ const feedbackTypes = {
   },
 };
 
-type FeedbackType = keyof typeof feedbackTypes | null;
+export type FeedbackType = keyof typeof feedbackTypes | null;
 
 export const WidgetForm = () => {
   const [feedbackType, setFeedbackType] = useState<FeedbackType>(null);
@@ -41,22 +42,11 @@ export const WidgetForm = () => {
         <CloseButton />
       </header>
 
-      <div className="flex py-8 gap-2 w-full">
-        {Object.entries(feedbackTypes).map(([key, value]) => (
-          <button
-            key={key}
-            className="bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
-            onClick={() => setFeedbackType(key as FeedbackType)}
-          >
-            <img
-              src={value.image.src}
-              alt={value.image.alt}
-              className="w-12 h-12 rounded-full"
-            />
-            <span className="text-zinc-400 text-center">{value.title}</span>
-          </button>
-        ))}
-      </div>
+      {!feedbackType ? (
+        <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
+      ) : (
+        <></>
+      )}
 
       <footer className="text-xs text-neutral-400">
         Feito com ❤ por
