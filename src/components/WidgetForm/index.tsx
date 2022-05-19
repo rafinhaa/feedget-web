@@ -6,6 +6,7 @@ import bugImageUrl from "../../assets/bug.png";
 import ideaImageUrl from "../../assets/idea.png";
 import thoughtImageUrl from "../../assets/thought.png";
 import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
+import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 
 export const feedbackTypes = {
   BUG: {
@@ -45,7 +46,7 @@ export const WidgetForm = () => {
       {!feedbackType ? (
         <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
       ) : (
-        <></>
+        <FeedbackContentStep />
       )}
 
       <footer className="text-xs text-neutral-400">
