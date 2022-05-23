@@ -1,21 +1,30 @@
-import { FeedbackType, feedbackTypes } from "..";
 import { CloseButton } from "../../CloseButton/CloseButton";
 
-interface FeedbackContentStepProps {
-  feedbackType: FeedbackType;
+import imgSuccess from "../../../assets/success.png";
+
+interface FeedbackSuccessProps {
+  onFeedbackRestartRequested: () => void;
 }
 
 export function FeedbackSuccessStep({
-  feedbackType,
-}: FeedbackContentStepProps) {
-  const feedbackTypeInfo = feedbackTypes[feedbackType];
+  onFeedbackRestartRequested,
+}: FeedbackSuccessProps) {
   return (
     <>
       <header>
-        <span className="text-xl leading-6">{feedbackTypeInfo}</span>
         <CloseButton />
       </header>
-      <div className="flex py-8 gap-2 w-full"></div>
+      <div className="flex flex-col items-center py-10 w-[304px]">
+        <img src={imgSuccess} alt="Sucesso" />
+        <span className="text-xl mt-2">Agradecemos o seu feedback!</span>
+        <button
+          type="button"
+          onClick={onFeedbackRestartRequested}
+          className="py-2 px-4 mt-6 bg-zinc-800 rounded-md border-transparent text-sm leading-6 hover:bg-zinc-700 transition-colors hover:border-brand-500 focus:border-brand-500 focus:outline-none"
+        >
+          Quero enviar outro feedback
+        </button>
+      </div>
     </>
   );
 }
