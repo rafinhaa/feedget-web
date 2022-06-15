@@ -26,3 +26,6 @@ dist-ssr
 # Yarn or NPM lockfiles
 yarn.lock
 package-lock.json
+
+# Dotenv
+.env.local
